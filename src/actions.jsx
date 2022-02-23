@@ -1,0 +1,3 @@
+export const HANDLECHANGE = "HANDLECHANGE";
+export const HANDLESUBMIT = "HANDLESUBMIT";
+export const HANDLERESET = "HANDLERESET";
