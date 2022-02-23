@@ -1,4 +1,4 @@
-import { HANDLECHANGE, HANDLERESET, HANDLESUBMIT } from "./actions";
+import { HANDLECHANGE, HANDLERESET, HANDLESUBMIT } from "./types";
 
 const defaultState = {
   input: "",

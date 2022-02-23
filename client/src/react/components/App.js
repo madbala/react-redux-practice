@@ -1,10 +1,10 @@
-import "./styles.css";
+import "../styles/styles.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
   handleChangeNew,
   handleSubmitNew,
   handleResetNew
-} from "./actionCreators";
+} from "../../redux/actionCreators";
 
 export default function App(props) {
   const nameReducer = useSelector((state) => state.nameReducer);
@@ -34,10 +34,8 @@ export default function App(props) {
           return <li key={i + 1}>{e}</li>;
         })}
       </ol>
-      {/* <p>{message}</p> */}
-      {/* <ol>{this.props.message.map((e)=>{return <li>{e}</li>})}</ol>     */}
+      
     </div>
   );
 }
 
-// export default connect(null, null)(App);

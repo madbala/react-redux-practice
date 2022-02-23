@@ -1,4 +1,4 @@
-import { HANDLECHANGE, HANDLESUBMIT, HANDLERESET } from "./actions";
+import { HANDLECHANGE, HANDLESUBMIT, HANDLERESET } from "./types";
 
 export const handleChangeNew = (val) => {
   return {
