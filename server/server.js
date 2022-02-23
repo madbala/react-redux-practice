@@ -4,7 +4,7 @@ const bodyparser = require('body-parser');
 const cors = require('cors');
 const passport = require('passport');
 const path = require('path');
-const connectDB = require('../../dbfiles/database');
+const connectDB = require('./dbfiles/database');
 
 
 //initialize the app
@@ -33,5 +33,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`server is running${PORT}`);
+    console.log(`server is running ${PORT}`);
 })

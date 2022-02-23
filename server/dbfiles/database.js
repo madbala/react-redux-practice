@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const URI = "mongodb+srv://admin:admin@hospitalmanagementsystem-xjxng.mongodb.net/test?retryWrites=true&w=majority";
+const URI = "mongodb+srv://mongousername:mongopassword@reactandreduxcluster.jtsp5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 const connectDB = async () => {
     await mongoose.connect(URI, { useUnifiedTopology: true, useNewUrlParser: true });
