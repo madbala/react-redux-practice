@@ -1,4 +1,4 @@
-import "../styles/styles.css";
+import "../assets/styles/styles.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
   handleChangeNew,
