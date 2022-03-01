@@ -15,14 +15,15 @@ router.get('/', (req, res) => {
 router.post('/', async (req, res) => {
     // console.log("<=========",req,"=========>",res,"req");
     const { email, password } = req.body;
-    const encryptedPassword = await bcrypt.hash(password, 10);
+
     
 
     const user = await User.findOne({ email:email.toLowerCase() });
-    console.log((await bcrypt.compare(password, user.password)),"login console============================123>");
+    // console.log("user start");
+    console.log(user,"============================123>");
 
-            if (user && (await bcrypt.compare(password, user.password))) {
-
+            if (user && (await bcrypt.compare(password, user.password))?(await bcrypt.compare(password, user.password)):false) {
+// console.log("user available");
                 const token = jwt.sign(
                     { user_id: user._id, email }, 
                     process.env.TOKEN_KEY,
@@ -32,11 +33,26 @@ router.post('/', async (req, res) => {
                   );
 
                   user.token = token;
-                  res.status(200).json(user);
+                  console.log("rolebased",user,user.role,user.email,user.name);
+                  if(user.role === "admin"){
+                      
+                    return res.json({
+                        message: "User available",route:"/adminhome"
+                    });
+                  }else{
+                    return res.json({
+                        message: "User available",route:"/userhome"
+                    });
+                  }
+                  
+               
+                //  return res.redirect('/home') working code
+                //   res.status(200).json(user);
                 
             } else {
                 return res.json({
                     message: "User unavailable kindly register first...",
+                    route:"/"
                 });
             }
     

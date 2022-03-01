@@ -8,7 +8,8 @@ const userSchema = new Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique:true
     },
     password: {
         type: String,
@@ -17,6 +18,10 @@ const userSchema = new Schema({
     token: {
         type: String,
         required: true
+    },
+    role:{
+        type:String,
+        required:true
     }
 })
 module.exports = mongoose.model("registerSchema", userSchema, "users")

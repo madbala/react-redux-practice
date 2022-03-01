@@ -4,13 +4,14 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import "./register.css";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 export const Login = function(props) {
   const [formValues,doFormValues] = useState({ email: "", password: "" });
-
+  var navigate = useNavigate();
   const doconsole = (values)=>{
-    console.log("log from login",values);
+    // console.log("log from login",navigate);
     const {email,password} = values;
     axios
       .post("/login", {
@@ -19,7 +20,16 @@ export const Login = function(props) {
       }) 
       .then(function (val) {
         alert(val.data.message);
-        window.location.reload();
+        // window.location.reload();
+        // axios.get("/home").then((val)=>{console.log("i m from home")});
+        if(val.data.route==='/'){
+          window.location.reload();
+          return;
+        }else{
+          navigate(val.data.route);
+          return;
+        }
+        
       }) 
       .catch(function () { 
         alert(val.data.message);

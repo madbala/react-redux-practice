@@ -28,10 +28,12 @@ router.post("/", async (req, res) => {
   } 
   else {
     const encryptedPassword = await bcrypt.hash(password, 10);
+    const user_role = process.env.ADMIN_EMAIL===email? "admin":"user";
     const user = new User({
       name: name,
       email: email.toLowerCase(),
-      password: encryptedPassword
+      password: encryptedPassword,
+      role:user_role
     });
     const token = jwt.sign(
       { user_id: user._id, email }, 

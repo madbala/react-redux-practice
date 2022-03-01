@@ -7,7 +7,8 @@ const auth = require("../middleware/auth");
 
 //-----
 router.get("/",auth, (req, res) => {
-    res.status(200).send("Welcome 🙌 ");
+    console.log("homelog");
+   return res.status(200).send("Welcome 🙌 ");
 });
 //-----
 
