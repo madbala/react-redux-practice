@@ -28,6 +28,8 @@ class Appout extends React.Component {
           <Route path="/" exact element={<Appin />}/>
           <Route path="/userhome" exact element={<Home />}/>
           <Route path="/adminhome" exact element={<Admin />}/>
+          <Route path="/forgetpassword" exact element={<Admin />}/>
+
         </Routes>
       </div>
      </Router>

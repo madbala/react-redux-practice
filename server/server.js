@@ -53,11 +53,13 @@ app.use(cors());
 app.use(passport.initialize());
 app.use(passport.session());
 const register = require('./api/register');
-const login = require('./api/login');
-const home = require('./api/home');
+const login = require('./api/login'); 
+const home = require('./api/home'); 
+const forgotPassword = require('./api/forgotPassword');
 app.use('/register', register);
 app.use('/login', login);
 app.use('/home', home);
+app.use('/forgotpassword',forgotPassword);
 app.use(express.static(path.join(__dirname, '../build')))
 app.get('/', (req, res) => {
    return res.sendFile(path.join(__dirname, '../build'))

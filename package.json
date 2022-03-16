@@ -1,16 +1,17 @@
 {
-  "name": "server",
+  "name": "react",
   "version": "1.0.0",
   "description": "React example starter project",
   "keywords": [
     "react",
     "starter"
   ],
-  "main": "server.js",
+  "main": "src/index.js",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.21.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "concurrently": "^7.0.0",
@@ -21,13 +22,14 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.12",
     "mongoose-unique-validator": "^2.0.3",
-    "nodemon": "^2.0.15",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-pose": "^4.0.8",
     "react-redux": "7.2.6",
+    "react-router": "^6.2.1",
+    "react-router-dom": "^6.2.1",
     "react-scripts": "4.0.0",
     "react-spring": "^8.0.20",
     "redux": "4.1.2",
@@ -40,8 +42,8 @@
     "node-sass": "^4.12.0"
   },
   "scripts": {
-    "start": "concurrently \"npm run server\" \"cd ../ && npm start\"",
-    "server": "nodemon server.js",
+    "start": "concurrently \"npm run client\" \"cd \"./server\" && npm run server\"",
+    "client": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

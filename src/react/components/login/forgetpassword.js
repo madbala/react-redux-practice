@@ -8,15 +8,13 @@ import { useNavigate } from 'react-router-dom';
 
 
 export const Login = function(props) {
-  const [formValues,doFormValues] = useState({ email: "", password: "" });
+  const [formValues,doFormValues] = useState({ email: ""});
   var navigate = useNavigate();
-  const doconsole = (values)=>{
-    // console.log("log from login",navigate);
-    const {email,password} = values;
+  const doForgotPassword = (values)=>{
+    const {email} = values;
     axios
-      .post("/login", {
-        email: email,
-        password:password
+      .post("/forgotpassword", {
+        email: email
       }) 
       .then(function (val) {
         alert(val.data.message);
@@ -43,8 +41,8 @@ export const Login = function(props) {
         initialValues={formValues}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
-            console.log("Login", values);
-            doconsole(values);
+            console.log("ForgotPassword", values);
+            doForgotPassword(values);
             setSubmitting(false);
           }, 500);
         }}
@@ -53,11 +51,7 @@ export const Login = function(props) {
         validationSchema={Yup.object().shape({
           email: Yup.string()
         .email()
-        .required("Required"),
-          password: Yup.string()
-            .required("No password provided.")
-            .min(8, "Password is too short - should be 8 chars minimum.")
-            .matches(/(?=.*[0-9])/, "Password must contain a number.")
+        .required("Required")          
         })}
       > 
         {props => {
@@ -75,7 +69,7 @@ export const Login = function(props) {
 
             < form onSubmit={handleSubmit} >
               <div className="base-container" ref={props.containerRef}>
-                <div className="header">Login</div>
+                <div className="header">ForgotPassword</div>
                 <div className="content">
                   <div className="image">
                     <img src={loginImg} />
@@ -101,28 +95,11 @@ export const Login = function(props) {
                         <div className="input-feedback">{errors.email}</div>
                       )}
                     </div>
-
-                    <div className="form-group">
-                      <label htmlFor="email">Password</label>
-                      <input
-                        name="password"
-                        type="password"
-                        placeholder="Enter your password"
-                        value={values.password}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        className={errors.password && touched.password && "error"}
-                      />
-
-                      {errors.password && touched.password && (
-                        <div className="input-feedback">{errors.password}</div>
-                      )}
-                    </div>
                   </div>
                 </div>
                 <div className="footer">
                   <button type="submit" className="btn" disabled={isSubmitting}>
-                    Login
+                    Submit
           </button>
                 </div>
               </div>
